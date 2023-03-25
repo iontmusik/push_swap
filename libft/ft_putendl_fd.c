@@ -1,14 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jtorre-s <jtorre-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 14:30:11 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/24 15:59:57 by jtorre-s         ###   ########.fr       */
+/*   Created: 2022/04/01 13:03:24 by jtorre-s          #+#    #+#             */
+/*   Updated: 2022/04/02 02:04:26 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
+
+	if (s == NULL)
+		return ;
+	i = 0 ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
+}

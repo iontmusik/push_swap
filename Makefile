@@ -19,7 +19,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 CFLAGS =  -Wall -Wextra -Werror
 
-SRC = push_swap.c push_swap_utils.c
+SRC = push_swap.c push_swap_utils.c checking.c
 
 $(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(OBJ) -L ./libft -l ft  -o $(NAME)

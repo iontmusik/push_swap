@@ -1,14 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jtorre-s <jtorre-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 14:30:11 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/24 15:59:57 by jtorre-s         ###   ########.fr       */
+/*   Created: 2022/03/31 21:32:28 by jtorre-s          #+#    #+#             */
+/*   Updated: 2022/04/01 13:18:23 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	del(lst->content);
+	free(lst);
+}

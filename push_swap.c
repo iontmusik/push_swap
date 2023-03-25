@@ -12,16 +12,44 @@
 
 #include "push_swap.h"
 
-t_push ft_init_stack(t_push *push)
+// void free_ps(t_push *push)
+// {
+
+// }
+
+t_push *ft_init_push(t_push *push)
 {
-    push = (*t_push)malloc(sizeof(t_push));
+    push = (t_push *)malloc(sizeof(t_push));
     if (push == NULL)
         exit(1);
     push->a = NULL;
     push->b = NULL;
     push->split = NULL;
-    push->int = 0;
+    push->len = 0;
     return (push);
+}
+
+
+
+
+
+
+
+void    push_swap(t_push *push, char **av)
+{   
+    t_stack *stack;
+    int i;
+
+    i = 1;
+    stack = NULL;
+    push->split = ft_split(av[i], ' ');
+    if (ft_checking(push->split, *push))
+    {
+
+    }
+    free(push);
+    
+    printf("hola");
 }
 
 int main(int ac, char **av)
@@ -32,9 +60,11 @@ int main(int ac, char **av)
     if (ac < 2)
         exit(1);
     else
-    {
-        push = ft_init_stack(push);
-        
-    }
+        {
+            push = ft_init_push(push);
+            push_swap(push, av);
+            free(push);
+            push = NULL;
+        }
     
 }

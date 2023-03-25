@@ -1,14 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jtorre-s <jtorre-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 14:30:11 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/24 15:59:57 by jtorre-s         ###   ########.fr       */
+/*   Created: 2022/03/31 13:57:39 by jtorre-s          #+#    #+#             */
+/*   Updated: 2022/03/31 15:14:42 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include<stdio.h>
 
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new->next = *lst;
+	*lst = new;
+}

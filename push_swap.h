@@ -28,10 +28,15 @@ typedef struct s_stack
 
 typedef struct s_push
 {
-    s_stack *a;
-    s_stack *b;
+    t_stack *a;
+    t_stack *b;
     char    **split;
+    char    *fd;
     int     len;
 }   t_push;
+
+int     ft_checking(char **split, t_push push);
+int     duplicate_nums(char **split);
+int     int_limits(char *av);
 
 #endif
