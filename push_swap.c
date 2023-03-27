@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:37:26 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/24 16:32:54 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:37:32 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ t_push *ft_init_push(t_push *push)
     push->a = NULL;
     push->b = NULL;
     push->split = NULL;
+    push->moves = 0;
     push->len = 0;
+    push->len_a = 0;
+    push->len_b = 0;
     return (push);
 }
 

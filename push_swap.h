@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:38:14 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/24 16:33:09 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:36:52 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_push
     char    **split;
     char    *fd;
     int     len;
+    int     len_a;
+    int     len_b;
+    int     moves;
 }   t_push;
 
 int     ft_checking(char **split, t_push push);
