@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checking.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/28 12:07:27 by jtorre-s          #+#    #+#             */
+/*   Updated: 2023/03/28 16:31:58 by jtorre-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "push_swap.h"
 
 int duplicate_nums(char **split)
@@ -7,25 +20,26 @@ int duplicate_nums(char **split)
     char    *rep;
 
     i = 0;
-    while (av[i])
+    while (split[i])
     {
-        rep = ft_strdup(av[i]);
+        rep = ft_strdup(split[i]);
         j = 0;
-        while (av[j])
+        while (split[j])
         {
             if (i == j)
                 j++;
-            else if (ft_strcmp(rep, av[j] == 0))
+            else if (strcmp(rep, split[j]) == 0)
             {
-                free(rep)
-                exit("Error - Números duplicados.", 1);
+                free(rep);
+                exit_ps("dup");
             }
             else
                 j++;
         }
         free(rep);
-        i++
+        i++;
     }
+    return (0);
 }
 
 long long   atoi_ps(char *num_char)
@@ -63,12 +77,12 @@ int    is_nums(char **av)
     {
         j = 0;
         if (int_limits(av[i]) == 0)
-            exit("Error - No es un numero entero.\n", 1);
+            exit_ps("max-min");
         while (av[i][j])
         {
             if (ft_isalpha(av[i][j]) == 1 || av[i][j] == '.' || ((av[i][j]) == '-' 
                 && (av[i][j + 1]) == '\0') || (av[i][j] == '+' && (av[i][j + 1]) == '\0'))
-                    exit("Error - Argumentos inválidos.\n", 1);
+                    exit_ps("inv-arg");
             j++;
         }
     }
@@ -82,14 +96,5 @@ int    int_limits(char *av)
     num = atoi_ps(av);
     if (num >= INT_MIN && num <= INT_MAX && ft_strlen(av) < 12)
         return (1);
-    return (0);
-}
-
-int ft_checking(char **split, t_push push)
-{
-    if (duplicate_nums(split) && is_num(av[1]))
-    {
-        return (1)
-    }
     return (0);
 }

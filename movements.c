@@ -6,72 +6,11 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 12:29:07 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/27 18:15:52 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:19:21 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct s_stack
-{
-    int             content;
-    struct s_stack  *next;
-}   t_stack;
-
-typedef struct s_push
-{
-    t_stack *a;
-    t_stack *b;
-    char    **split;
-    char    *fd;
-    int     len;
-    int     len_a;
-    int     len_b;
-    int     moves;
-}   t_push;
-
-void ft_init_push(t_push *push)
-{
-    push = (t_push *)malloc(sizeof(t_push));
-    if (push == NULL)
-        exit(1);
-    push->a = NULL;
-    push->b = NULL;
-    push->split = NULL;
-    push->moves = 0;
-    push->len = 0;
-    push->len_a = 0;
-    push->len_b = 0;
-    return ;
-}
-
-t_stack	*ft_lstlast_ps(t_stack *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst && lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-void	*ft_lstadd_back_ps(t_stack **lst, t_stack *new)
-{
-	t_stack	*ultimo;
-
-	if (lst == NULL)
-		return ;
-	if (!(*lst))
-		*lst = new;
-	else
-	{
-		ultimo = ft_lstlast_ps(*lst);
-		if (ultimo)
-			ultimo->next = new;
-	}
-}
-
+#include "push_swap.h"
 
 void    s_swap(t_stack *stack, char c, t_push *push)
 {
@@ -87,7 +26,6 @@ void    s_swap(t_stack *stack, char c, t_push *push)
         temp->content = num2;
         temp->next->content = num1;
         stack = temp;
-
         if (c == 'a')
             printf("sa\n");
             
@@ -97,9 +35,9 @@ void    s_swap(t_stack *stack, char c, t_push *push)
     }
     return ;
 }
-void    ss_swap(t_stack *a, t_stack *b, char c, t_push *push)
+void    ss_swap(t_stack *a, t_stack *b, t_push *push)
 {
-    s_swap(a, 's',  push);
+    s_swap(a, 's', push);
     s_swap(b, 's', push);
     printf("ss");
     return ;
@@ -107,7 +45,6 @@ void    ss_swap(t_stack *a, t_stack *b, char c, t_push *push)
 
 void    p_swap(t_stack **stack1, t_stack **stack2, char c, t_push *push)
 {
-    int     num;
     t_stack *temp;
     
     if (stack2)
@@ -158,17 +95,11 @@ void    r_swap(t_stack **stack, char c, t_push *push)
     return ;
 }
 
-void    rr_swap(t_stack **stack1, t_stack **stack2, char c, t_push *push)
+void    rr_swap(t_stack **stack1, t_stack **stack2, t_push *push)
 {
     r_swap(stack1, 'r', push);
     r_swap(stack2, 'r', push);
     printf("rr\n\n");
-}
-
-void	ft_lstiter_ps(t_stack *lst)
-{
-	while (lst && lst->next != NULL)
-		lst = lst->next;
 }
 
 void    r_rev_swap(t_stack **stack, char c, t_push *push)
@@ -177,10 +108,11 @@ void    r_rev_swap(t_stack **stack, char c, t_push *push)
     t_stack *temp2;
 
     temp = NULL;
+    temp2 = NULL;
     if (stack)
     {
         temp = ft_lstlast_ps(*stack);
-        ft_lstadd_back_ps(*stack, temp);
+        ft_lstadd_back_ps(&(*stack), temp);
         ft_lstiter_ps(temp2);
         temp2->next = NULL;
         temp->next = *stack;
@@ -194,14 +126,14 @@ void    r_rev_swap(t_stack **stack, char c, t_push *push)
     return ;
 }
 
-void    rr_rev_swap(t_stack **stack1, t_stack **stack2, char c, t_push *push)
+void    rr_rev_swap(t_stack **stack1, t_stack **stack2, t_push *push)
 {
     r_rev_swap(stack1, 'r', push);
     r_rev_swap(stack2, 'r', push);
     printf("rrr\n\n");
 }
-
-int main()
+/* 
+ int main()
 {
     t_push push;
     ft_init_push(&push);
@@ -224,16 +156,17 @@ int main()
     printf("%d\n", a->content);
     printf("%d\n", a->next->content);
     printf("%d\n\n", a->next->next->content);
-/*     printf("%d\n", b->content);
+    printf("%d\n", b->content);
     printf("%d\n", b->next->content);
-    printf("%d\n\n", b->next->next->content); */
+    printf("%d\n\n", b->next->next->content); 
     //rr_swap(&a, &b, 's', &push);
     r_rev_swap(&a, 'a', &push);
     printf("%d\n", a->content);
     printf("%d\n", a->next->content);
     printf("%d\n\n", a->next->next->content);
-/*     printf("%d\n", b->content);
+     printf("%d\n", b->content);
     printf("%d\n", b->next->content);
-    printf("%d\n\n", b->next->next->content); */
+    printf("%d\n\n", b->next->next->content); 
     return (0);
-}
+} 
+ */
