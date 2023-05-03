@@ -6,11 +6,12 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:30:11 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/29 14:03:58 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:09:02 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
+
 
 /* void ft_order_lst(t_stack *a, t_stack *new)
 {
@@ -39,7 +40,7 @@ t_stack *ft_lstlast_ps(t_stack *lst)
 
 }
 
-t_stack *ft_lstlast_ps2(t_stack *lst, t_stack *new, t_push *push)
+/* t_stack *ft_lstlast_ps2(t_stack *lst, t_stack *new, t_push *push)
 {
 	if (lst == NULL)
 		return (NULL);
@@ -80,7 +81,7 @@ void	ft_lstadd_back_ps2(t_stack **lst, t_stack *new, t_push *push)
 			ultimo->next = new;
 	}
     return ;
-}
+} */
 
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 {

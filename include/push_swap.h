@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:38:14 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/29 13:51:52 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:13:39 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <string.h>
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_stack
 {
     int             content;
-    int             position;
     struct s_stack  *next;
 }   t_stack;
 
@@ -41,14 +40,12 @@ typedef struct s_push
 
 // INIT STRUCT  ARCHIVE: init.c
 t_push      *ft_init_push(t_push *push);
-void        put_arg_to_int(t_push *push, char **av);
+void         put_arg_to_int(t_stack *stack, char **av, t_push *push);
 t_stack	    *ft_lstnew_ps(int content);
 void	    ft_lstadd_back_ps(t_stack **lst, t_stack *new);
-void	    ft_lstadd_back_ps2(t_stack **lst, t_stack *new, t_push *push);
 void        ft_order_lst(t_stack *a, t_stack *new);
 
 // UTILS  ARCHIVE: push_swap_utils.c
-t_stack	    *ft_lstlast_ps2(t_stack *lst, t_stack *new, t_push *push);
 t_stack	    *ft_lstlast_ps(t_stack *lst);
 void	    ft_lstiter_ps(t_stack *lst);
 
@@ -74,6 +71,8 @@ void        rr_swap(t_stack **stack1, t_stack **stack2, t_push *push);
 void        r_rev_swap(t_stack **stack, char c, t_push *push);
 void        rr_rev_swap(t_stack **stack1, t_stack **stack2, t_push *push);
 
+// ALGORITHMS
+void      algo_2(t_stack **stack, t_push *push);
 
 
 

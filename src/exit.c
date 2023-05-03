@@ -6,11 +6,12 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:11:17 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/28 14:54:22 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:53:22 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
+
 
 int exit_ps(char *text)
 {

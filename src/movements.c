@@ -6,11 +6,12 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 12:29:07 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/29 13:19:21 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:31:37 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
+
 
 void    s_swap(t_stack *stack, char c, t_push *push)
 {
@@ -18,8 +19,9 @@ void    s_swap(t_stack *stack, char c, t_push *push)
     int num2;
     t_stack *temp;
     
-    if (stack && stack->next)
+    if (stack)
     {
+        printf("es a?");
         temp = stack;
         num1 = stack->content;
         num2 = stack->next->content;
@@ -35,6 +37,7 @@ void    s_swap(t_stack *stack, char c, t_push *push)
     }
     return ;
 }
+
 void    ss_swap(t_stack *a, t_stack *b, t_push *push)
 {
     s_swap(a, 's', push);

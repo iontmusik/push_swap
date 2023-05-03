@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   algoritm_2_3_5.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 12:37:26 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/28 18:56:12 by jtorre-s         ###   ########.fr       */
+/*   Created: 2023/04/24 15:48:38 by jtorre-s          #+#    #+#             */
+/*   Updated: 2023/05/03 13:14:10 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-void    push_swap(t_push *push, char **av)
-{   
-
-/*     duplicate_nums(push->split);
-    is_nums(&push->split[1]); */
-
-    put_arg_to_int(push, av);
-}
-
-int main(int ac, char **av)
+void    algo_2(t_stack **stack, t_push *push)
 {
-    t_push *push;
+    t_stack *tmp;
     
-    push = NULL;
-    if (ac < 2)
-        exit_ps("need-aarg");
-    else
-        {
-            push = ft_init_push(push);
-            push_swap(push, av);
-            push = NULL;
-        }
-    
+    tmp = *stack;
+    if (tmp->content > tmp->next->content)
+        s_swap(*stack, 'a', push);
+    printf("hola");
+    //printf("%d\n", stack->content);
 }

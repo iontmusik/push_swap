@@ -6,12 +6,13 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:07:27 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/28 16:31:58 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:53:18 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
+
 
 int duplicate_nums(char **split)
 {

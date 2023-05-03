@@ -6,11 +6,12 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:50:00 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/03/29 14:19:56 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:07:39 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
+
 
 t_stack	*ft_lstnew_ps(int content)
 {	
@@ -50,16 +51,6 @@ void	ft_construction_lst(t_stack **lst, t_stack *new)
 	{
         while ((*lst)->next)
         {
-		    printf("suma new:\n");
-		    if (new->content > (*lst)->content)
-		    {
-        	    new->content++;
-    		}
-	    	else if (new->content < (*lst)->content)
-		    {
-                (*lst)->position++;
-	    		//printf("suma lst: \n");
-		    }
 		    (*lst) = (*lst)->next;
 	    }
          if (new)
@@ -68,7 +59,7 @@ void	ft_construction_lst(t_stack **lst, t_stack *new)
     return ;
 }
 
-void put_arg_to_int(t_push *push, char **av)
+void put_arg_to_int(t_stack *stack, char **av, t_push *push)
 {
     int i;
     int num;
@@ -81,15 +72,11 @@ void put_arg_to_int(t_push *push, char **av)
     	{
             num = atoi_ps(av[i]);
             new = ft_lstnew_ps(num);
-        //    printf("Nº %d\n", i);
-            ft_construction_lst(&push->a, new);
+            ft_lstadd_back_ps(&stack, new);
+            printf("%d", stack->content);
+            stack = stack->next;
+            printf("adios\n");
             i++;
         }
-        while (push->a->next != NULL)
-        {
-            printf("%d ", push->a->content);
-            printf("%d\n", push->a->position);
-            push->a = push->a->next;
-        }
-    }    
+    }
 }
