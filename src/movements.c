@@ -6,14 +6,14 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 12:29:07 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/03 12:31:37 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:04:32 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 
-void    s_swap(t_stack *stack, char c, t_push *push)
+void    s_swap(t_stack **stack, char c, t_push *push)
 {
     int num1;
     int num2;
@@ -21,13 +21,13 @@ void    s_swap(t_stack *stack, char c, t_push *push)
     
     if (stack)
     {
-        printf("es a?");
-        temp = stack;
-        num1 = stack->content;
-        num2 = stack->next->content;
+       // printf("es a?");
+        temp = *stack;
+        num1 = (*stack)->content;
+        num2 = (*stack)->next->content;
         temp->content = num2;
         temp->next->content = num1;
-        stack = temp;
+        *stack = temp;
         if (c == 'a')
             printf("sa\n");
             
@@ -40,8 +40,8 @@ void    s_swap(t_stack *stack, char c, t_push *push)
 
 void    ss_swap(t_stack *a, t_stack *b, t_push *push)
 {
-    s_swap(a, 's', push);
-    s_swap(b, 's', push);
+    s_swap(&a, 's', push);
+    s_swap(&b, 's', push);
     printf("ss");
     return ;
 }
@@ -105,28 +105,33 @@ void    rr_swap(t_stack **stack1, t_stack **stack2, t_push *push)
     printf("rr\n\n");
 }
 
-void    r_rev_swap(t_stack **stack, char c, t_push *push)
-{
-    t_stack *temp;
-    t_stack *temp2;
 
-    temp = NULL;
-    temp2 = NULL;
-    if (stack)
+void r_rev_swap(t_stack **stack, char c, t_push *push)
+{
+    t_stack *last;
+    t_stack *before_last;
+
+    if (!stack || !*stack || !(*stack)->next)
+        return;
+
+    last = *stack;
+    while (last->next)
     {
-        temp = ft_lstlast_ps(*stack);
-        ft_lstadd_back_ps(&(*stack), temp);
-        ft_lstiter_ps(temp2);
-        temp2->next = NULL;
-        temp->next = *stack;
-        *stack = temp;
-        if (c == 'a')
-            printf("rra\n");
-        else if (c == 'b')
-            printf("rrb\n");
-        push->moves++;
+        before_last = last;
+        last = last->next;
     }
-    return ;
+
+    if (before_last)
+        before_last->next = NULL;
+    last->next = *stack;
+    *stack = last;
+
+    if (c == 'a')
+        printf("rra\n");
+    else if (c == 'b')
+        printf("rrb\n");
+
+    push->moves++;
 }
 
 void    rr_rev_swap(t_stack **stack1, t_stack **stack2, t_push *push)

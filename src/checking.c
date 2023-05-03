@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:07:27 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/03 10:53:18 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:33:24 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 #include "../include/push_swap.h"
 
 
-int duplicate_nums(char **split)
+int duplicate_nums(char **av)
 {
     int     i;
     int     j;
     char    *rep;
 
     i = 0;
-    while (split[i])
+    while (av[i])
     {
-        rep = ft_strdup(split[i]);
+        rep = ft_strdup(av[i]);
         j = 0;
-        while (split[j])
+        while (av[j])
         {
             if (i == j)
                 j++;
-            else if (strcmp(rep, split[j]) == 0)
+            else if (strcmp(rep, av[j]) == 0)
             {
                 free(rep);
                 exit_ps("dup");

@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:50:00 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/03 13:07:39 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:41:19 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,42 +41,27 @@ t_push *ft_init_push(t_push *push)
     return (push);
 }
 
-void	ft_construction_lst(t_stack **lst, t_stack *new)
-{
-	if (lst == NULL)
-		return ;
-	if (!(*lst))
-		*lst = new;
-	else
-	{
-        while ((*lst)->next)
-        {
-		    (*lst) = (*lst)->next;
-	    }
-         if (new)
-            new->next = new; 
-	}
-    return ;
-}
-
-void put_arg_to_int(t_stack *stack, char **av, t_push *push)
+void position_nums(char **av, t_push *push)
 {
     int i;
-    int num;
-    t_stack *new;
+    char *str;
+    int j;
 
     i = 1;
-	if (push)
+    j = 0;
+	if (!push)
+		return ;
+	str = malloc(sizeof(char));
+    while (av[i])
     {
-        while (av[i] != NULL)
-    	{
-            num = atoi_ps(av[i]);
-            new = ft_lstnew_ps(num);
-            ft_lstadd_back_ps(&stack, new);
-            printf("%d", stack->content);
-            stack = stack->next;
-            printf("adios\n");
-            i++;
-        }
+		str = ft_strjoin(str, av[i]);
+        i++;
     }
+	printf("%s\n", str);
+	//push->split = ft_split(str, ' ');
+/* 	printf("%s\n", push->split[0]);
+	printf("%s\n", push->split[1]);
+	printf("%s\n", push->split[2]);
+	printf("%s\n", push->split[3]); */
+	
 }

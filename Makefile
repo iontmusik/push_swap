@@ -6,7 +6,7 @@
 #    By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 17:09:44 by jtorre-s          #+#    #+#              #
-#    Updated: 2023/05/03 11:35:33 by jtorre-s         ###   ########.fr        #
+#    Updated: 2023/05/03 16:52:54 by jtorre-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC_DIR = ./src
 
 CFLAGS =  -Wall -Wextra -Werror
 
-SRC = push_swap.c push_swap_utils.c checking.c movements.c exit.c init.c algoritm_2_3_5.c
+SRC = push_swap.c push_swap_utils.c checking.c movements.c exit.c init.c algoritm_2_3_5.c \
+		
 
 $(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(OBJ) -L ./libft -l ft  -o $(NAME)
