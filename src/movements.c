@@ -6,140 +6,113 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 12:29:07 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/03 16:04:32 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:40:06 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-
-void    s_swap(t_stack **stack, char c, t_push *push)
+void	s_swap(t_stack **stack, char c, t_push *push)
 {
-    int num1;
-    int num2;
-    t_stack *temp;
-    
-    if (stack)
-    {
-       // printf("es a?");
-        temp = *stack;
-        num1 = (*stack)->content;
-        num2 = (*stack)->next->content;
-        temp->content = num2;
+	int			num1;
+	int			num2;
+	int			pos_temp;
+	t_stack		*temp;
+
+	if (stack)
+	{
+		temp = *stack;
+		num1 = (*stack)->content;
+		num2 = (*stack)->next->content;
+		pos_temp = (*stack)->pos;
+		temp->content = num2;
+		temp->pos = (*stack)->next->pos;
+		temp->next = (*stack)->next;
+		temp->next->pos = pos_temp;
         temp->next->content = num1;
-        *stack = temp;
-        if (c == 'a')
-            printf("sa\n");
-            
-        else if (c == 'b')
-            printf("sb\n");
-        push->moves++;
-    }
-    return ;
+		temp->next->next = (*stack)->next->next;
+		*stack = temp;
+		if (c == 'a' || c == 'b')
+			print_and_moves_s(push, c);
+	}
 }
 
-void    ss_swap(t_stack *a, t_stack *b, t_push *push)
+void	ss_swap(t_stack *a, t_stack *b, t_push *push)
 {
-    s_swap(&a, 's', push);
-    s_swap(&b, 's', push);
-    printf("ss");
-    return ;
+	s_swap(&a, 's', push);
+	s_swap(&b, 's', push);
+	printf("ss");
+	push->moves++;
 }
 
-void    p_swap(t_stack **stack1, t_stack **stack2, char c, t_push *push)
+void	p_swap(t_stack **stack1, t_stack **stack2, char c, t_push *push)
 {
-    t_stack *temp;
-    
-    if (stack2)
-    {
-        temp = (*stack2);
-        (*stack2) = (*stack2)->next;
-        temp->next = *stack1;
-        *stack1 = temp;
-        if (c == 'a')
-        {
-            push->len_a -= 1;
-            push->len_b += 1;
-            printf("pa\n");
-        }
-        else if (c == 'b')
-        {
-            push->len_a += 1;
-            push->len_b -= 1;
-            printf("pb\n");
-        }
-    push->moves++;
-    }
-    return ;
+	t_stack	*temp;
+
+	if (stack2)
+	{
+		temp = (*stack2);
+		(*stack2) = (*stack2)->next;
+		temp->next = *stack1;
+		temp->pos = (*stack1)->pos;
+		*stack1 = temp;
+		print_and_moves_p(push, c);
+	}
+	return ;
 }
 
-void    r_swap(t_stack **stack, char c, t_push *push)
+void	r_swap(t_stack **stack, char c, t_push *push)
 {
-    int     num;
-    t_stack *temp;
+	int		num;
+    t_stack	*temp;
 
-    temp = NULL;
-    if (stack)
-    {
-        num = (*stack)->content;
-        temp = (t_stack *)malloc(sizeof(t_stack));
-        if (temp == NULL)
-            exit (1);
-        temp->content = num;
-        temp->next = NULL;
-        (*stack) = (*stack)->next;
-        ft_lstadd_back_ps(stack, temp);
-        if (c == 'a')
-            printf("ra\n");
-        else if (c == 'b')
-            printf("rb\n");
-        push->moves++;
-    }
-    return ;
+	temp = NULL;
+	if (stack)
+	{
+		num = (*stack)->content;
+		temp = (t_stack *)malloc(sizeof(t_stack));
+		if (temp == NULL)
+			exit (1);
+		temp->content = num;
+		temp->next = (*stack)->next;
+		temp->pos = (*stack)->pos;
+		(*stack) = (*stack)->next;
+		ft_lstadd_back_ps(stack, temp);
+		if (c == 'a' || c == 'b')
+			print_and_moves_r(push, c);
+	}
 }
 
-void    rr_swap(t_stack **stack1, t_stack **stack2, t_push *push)
+void	rr_swap(t_stack **stack1, t_stack **stack2, t_push *push)
 {
-    r_swap(stack1, 'r', push);
-    r_swap(stack2, 'r', push);
-    printf("rr\n\n");
+	r_swap(stack1, 'r', push);
+	r_swap(stack2, 'r', push);
+	printf("rr\n\n");
+	push->moves++;
 }
 
-
-void r_rev_swap(t_stack **stack, char c, t_push *push)
+void	r_rev_swap(t_stack **stack, char c, t_push *push)
 {
-    t_stack *last;
-    t_stack *before_last;
+	t_stack	*last;
+	t_stack	*before_last;
 
-    if (!stack || !*stack || !(*stack)->next)
-        return;
-
-    last = *stack;
-    while (last->next)
-    {
-        before_last = last;
-        last = last->next;
-    }
-
-    if (before_last)
-        before_last->next = NULL;
-    last->next = *stack;
-    *stack = last;
-
-    if (c == 'a')
-        printf("rra\n");
-    else if (c == 'b')
-        printf("rrb\n");
-
-    push->moves++;
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	last = *stack;
+	while (last->next)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	if (before_last)
+		before_last->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	if (c == 'a' || c == 'b')
+		print_and_moves_w(push, c);
 }
 
-void    rr_rev_swap(t_stack **stack1, t_stack **stack2, t_push *push)
-{
-    r_rev_swap(stack1, 'r', push);
-    r_rev_swap(stack2, 'r', push);
-    printf("rrr\n\n");
-}
+
 /* 
  int main()
 {
