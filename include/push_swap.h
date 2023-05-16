@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:38:14 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/15 13:15:23 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:53:28 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <string.h>
 # include "../libft/libft.h"
+# include "printf.h"
 
 typedef struct s_stack
 {
@@ -62,8 +63,7 @@ void		print_and_moves_r(t_push *push, char c);
 void		print_and_moves_w(t_push *push, char c);
 
 // MAX NUM & MIN NUM & COUNT NUMS ARCHIVE count_max_min.c
-void		ft_minimo(t_stack *stack, t_push *push, char c);
-void		ft_maximo(t_stack *stack, t_push *push, char c);
+void		maxminstack(t_stack *stack, t_push *push, char c);
 void		count_nums(t_stack *stack, t_push *push, char c);
 
 // CHECKING NUMS  ARCHIVE: checking.c

@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:30:11 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/15 11:05:56 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:00:33 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 void	ft_lstiter_ps(t_stack *lst)
 {
 	while (lst && lst->next != NULL)
+	{
 		lst = lst->next;
+		
+	}
 }
 
 void	put_arg_to_int(t_stack **stack, char **av, t_push *push)
@@ -83,15 +86,3 @@ void	put_arg_to_int(t_stack **stack, char **av, t_push *push)
 	}
 }
 
-void	position_nums(t_stack *stack, t_stack *new)
-{
-	while (stack)
-	{
-/* 	 	printf("%p - %p\n", &tmp, stack);  */
-		if (new->content > stack->content)
-			new->pos++;
-		else if (new->content < stack->content)
-			stack->pos++;
-		stack = stack->next;
-	}
-}

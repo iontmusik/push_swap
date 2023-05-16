@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:37:26 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/15 13:25:57 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:22:29 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ int	main(int ac, char *av[])
 		printf("\nNodo: %d   Pos: %d\n", push->a->next->next->content, push->a->next->next->pos);
 	/* 	printf("\nNodo: %d   Pos: %d\n", push->a->next->next->next->content, push->a->next->next->next->pos);
 		printf("\nNodo: %d   Pos: %d\n", push->a->next->next->next->next->content, push->a->next->next->next->next->pos);
-		 */printf("Movimientos: %d\n", push->moves);
+		 */
+/* 		printf("Movimientos: %d\n", push->moves);
 		count_nums(push->a, push, 'a');
-		printf("tamaño del stack A: %d\n", push->len_a);
+		printf("Tamaño del stack A: %d\n", push->len_a); */
+
 	}
 	return (0);
 }

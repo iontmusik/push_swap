@@ -6,11 +6,25 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:48:38 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/15 12:45:39 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:37:37 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void	select_algo(t_stack **stack_a, t_stack **stack_b, t_push *push)
+{
+	
+}
+
+void	ra_rra(t_stack **stack_a, t_push *push, int pos)
+{
+	if (pos < (push->len_a / 2))
+		r_swap(stack_a, 'a', push);
+	else
+		r_swap(stack_a, 'a', push);
+	return ;
+}
 
 void	algo_2(t_stack **stack, t_push *push)
 {
@@ -50,7 +64,6 @@ void	algo_3(t_stack **stack1, t_push *push)
 		if (num1 < num2 && num1 > num3 && num2 > num3)
 			r_rev_swap(stack1, 'a', push);
 	}
-	return ;
 }
 
 
@@ -62,19 +75,19 @@ void	algo_3(t_stack **stack1, t_push *push)
 	t_stack	*tmp;
 
 	tmp = *stack_a;
-	while (data->count_b < 2)
+	while (push->len_b < 2)
 	{
 		tmp = *stack_a;
-		max_min(*stack_a, data, 'a');
-		if (tmp->content == data->max_a || tmp->content == data->min_a)
+		maxminstack(*stack_a, push, 'a');
+		if (tmp->content == push->max_a || tmp->content == data->min_a)
 			ft_pb(stack_a, stack_b, data);
-		else if (data->count_b == 1)
-			ra_rra(stack_a, data, data->max_a);
+		else if (push->len_b == 1)
+			ra_rra(*stack_a, *push, push->max_a);
 		else
-			ra_rra(stack_a, data, data->min_a);
+			ra_rra(stack_a, data, push->min_a);
 	}
-	select_al(stack_a, stack_b, data);
-	while (data->count_b != 0)
+	select_algo(stack_a, stack_b, data);
+	while (push->len_b != 0)
 	{
 		ft_move_a(stack_a, stack_b, data);
 	}

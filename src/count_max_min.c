@@ -6,16 +6,16 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 11:29:29 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/15 13:38:27 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:03:00 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_minimo(t_stack *stack, t_push *push, char c)
+static void	ft_minimo(t_stack *stack, t_push *push, char c)
 {
-	push->min_a = 2147483647;
-	push->min_b = 2147483647;
+	push->min_a = INT_MAX;
+	push->min_b = INT_MAX;
 	if (c == 'a')
 	{
 		while (stack)
@@ -36,10 +36,10 @@ void	ft_minimo(t_stack *stack, t_push *push, char c)
 	}
 }
 
-void	ft_maximo(t_stack *stack, t_push *push, char c)
+static void	ft_maximo(t_stack *stack, t_push *push, char c)
 {
-	push->max_a = -2147483647;
-	push->max_b = -2147483647;
+	push->max_a = INT_MIN;
+	push->max_b = INT_MIN;
 	if (c == 'a')
 	{
 		while (stack)
@@ -60,32 +60,41 @@ void	ft_maximo(t_stack *stack, t_push *push, char c)
 	}
 }
 
-void	maxminstack(t_stack *stack, t_push push, char c)
+void	maxminstack(t_stack *stack, t_push *push, char c)
 {
-	ft_minimo(stack, &push, c);
-	ft_maximmo(stack, &push, c);
+	ft_minimo(stack, push, c);
+	ft_maximo(stack, push, c);
 }
 
 void	count_nums(t_stack *stack, t_push *push, char c)
 {
-	maxminstack(stack, &push, c);
-	
-	if (c == 'a' && push->len_a != 0)
+	maxminstack(stack, push, c);
+	if (c == 'a' && stack)
 	{
-		while (stack->content != push->len_a)
+		while (stack)
 		{
-			if (stack->content != push->len_a)
-				push->len_a++;
+			push->len_a++;
 			stack = stack->next;
 		}
 	}
-	else if (c == 'b' && push->len_b != 0)
+	else if (c == 'b' && stack)
 	{
-		while (stack->content != push->len_b)
+		while (stack)
 		{
-			if (stack->content != push->len_b)
-				push->len_b++;
+			push->len_b++;
 			stack = stack->next;
 		}
+	}
+}
+
+void	position_nums(t_stack *stack, t_stack *new)
+{
+	while (stack)
+	{
+		if (new->content > stack->content)
+			new->pos++;
+		else if (new->content < stack->content)
+			stack->pos++;
+		stack = stack->next;
 	}
 }
