@@ -49,18 +49,6 @@ rrb - reverse rotate stack b.
 rrr - rra and rrb at the same time.
 USED ALGORITHM
 
-I used a recursive quick-sort algorithm with the median as the pivot to make quick sort efficient. If the number of elements to be sorted is 3 or less, a different sorting function is used. There are two recusive functions to sort the stacks:
-
-quick_sort_a, sorts the stack as follows :
-
-Find the median of the len top numbers in Stack A (for the first iteration, len top numbers are the number of numbers in the list).
-From now on, the median will be known as pivot.
-From the len top numbers in the list, push those which are smaller than the pivot onto Stack B. 4.Use quick_sort_a on the len / 2 elements left in Stack A. Use quick_sort_b on the len / 2 elements pushed on Stack B.
-quick_sort_b, works like this:
-
-Find the median of the len top numbers in Stack B (for the first iteration, len top numbers are half the number of numbers in the list)
-For the len top numbers of the stack, push those which are higher than the pivot onto Stack A.
-Use quick_sort_a on the len / 2 elements which where pushed onto Stack A. Use quick_sort_b on the len / 2 elements left in Stack B.
 📋 Testing
 You can use this third party testers to fully test the project:
 
