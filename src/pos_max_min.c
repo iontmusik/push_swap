@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:25:38 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/20 11:41:43 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:32:15 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	pos_num_max(t_stack *stack, t_push *push, char c)
 			stack = stack->next;
 		}
 	}
-
 }
 
 void	pos_num_min(t_stack *stack, t_push *push, char c)
@@ -63,5 +62,4 @@ void	posmaxmin(t_stack *stack, t_push *push, char c)
 {
 	pos_num_min(stack, push, c);
 	pos_num_max(stack, push, c);
-
 }

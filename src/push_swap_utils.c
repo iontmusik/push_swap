@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:30:11 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/20 16:20:31 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:28:19 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,3 @@ void	put_arg_to_int(t_stack **stack, int num)
 	position_nums(*stack, tmp);
 	tmp = NULL;
 }
-

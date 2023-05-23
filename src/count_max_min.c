@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 11:29:29 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/20 16:20:22 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:08:57 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	count_nums(t_stack *stack)
 
 void	position_nums(t_stack *stack, t_stack *new)
 {
+	new->pos = 0;
 	while (stack)
 	{
 		if (new->content > stack->content)

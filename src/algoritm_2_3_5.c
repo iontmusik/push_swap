@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:48:38 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/20 16:57:18 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:30:28 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ void	select_algo(t_stack **stack_a, t_stack **stack_b, t_push *push)
 		algo_5(stack_a, stack_b, push);
 	else if (push->len_a > 5)
 		radix_sort(stack_a, stack_b, push);
-	//free(stack_b);
 }
-
 
 void	algo_2(t_stack **stack, t_push *push)
 {
@@ -57,7 +55,7 @@ void	algo_3(t_stack **stack1, t_push *push)
 		num2 = tmp->content;
 		tmp = tmp->next;
 		num3 = tmp->content;
-		if ((num1 > num2 && num1 < num3 && num2 < num3) 
+		if ((num1 > num2 && num1 < num3 && num2 < num3)
 			|| (num1 > num3 && num2 > num3 && num1 > num2)
 			|| (num1 < num2 && num1 < num3 && num2 > num3))
 			sa_swap(stack1, push);
@@ -104,4 +102,3 @@ void	ft_move_a(t_stack **stack_a, t_stack **stack_b, t_push *push)
 		ra_swap(stack_a, push);
 	return ;
 }
-

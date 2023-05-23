@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:40:19 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/20 13:33:30 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:31:33 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,3 @@ void	rr_swap(t_stack **stack1, t_stack **stack2, t_push *push)
 	push->moves++;
 	return ;
 }
-

@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:38:14 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/20 16:47:58 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:11:45 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ typedef struct s_stack
 
 typedef struct s_push
 {
-/* 	t_stack	*a;
-	t_stack	*b; */
 	char	**split;
 	int		len_a;
 	int		len_b;

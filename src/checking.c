@@ -6,10 +6,9 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:07:27 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/20 12:11:02 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:31:05 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include/push_swap.h"
 
@@ -20,9 +19,10 @@ int	checkparams(char *argv)
 	i = 0;
 	while (argv[i])
 	{
-		if ((argv[i] < '0' || argv[i] > '9') && argv[i] != '-')
+		if ((argv[i] < '0' || argv[i] > '9')
+			&& (argv[i] != '-' && argv[i] != '+'))
 			return (1);
-		if (argv[i + 1] == '-')
+		if (argv[i + 1] == '-' || argv[i + 1] == '+')
 			return (1);
 		i++;
 	}
@@ -39,7 +39,8 @@ void	argcheck(char **argv, t_stack **stack_a)
 	while (argv[i])
 	{
 		if (ft_strlen(argv[i]) == 0 || (ft_strlen(argv[i]) == 1
-				&& (argv[i][0] == ' ' || argv[i][0] == '-')))
+				&& (argv[i][0] == ' '
+				|| (argv[i][0] == '-' || argv[i][0] == '+'))))
 			ft_error();
 		av = ft_split(argv[i], ' ');
 		j = 0;
@@ -67,4 +68,3 @@ void	duplicate_nums(t_stack *stack, int num)
 	}
 	return ;
 }
-
