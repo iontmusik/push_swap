@@ -6,19 +6,19 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 11:29:29 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/16 13:03:00 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:20:22 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	ft_minimo(t_stack *stack, t_push *push, char c)
+void	ft_minimo(t_stack *stack, t_push *push, char c)
 {
-	push->min_a = INT_MAX;
-	push->min_b = INT_MAX;
+	push->min_a = 2147483647;
+	push->min_b = 2147483647;
 	if (c == 'a')
 	{
-		while (stack)
+		while (stack != NULL)
 		{
 			if (stack->content < push->min_a)
 				push->min_a = stack->content;
@@ -27,7 +27,7 @@ static void	ft_minimo(t_stack *stack, t_push *push, char c)
 	}
 	if (c == 'b')
 	{
-		while (stack)
+		while (stack != NULL)
 		{
 			if (stack->content < push->min_b)
 				push->min_b = stack->content;
@@ -36,13 +36,13 @@ static void	ft_minimo(t_stack *stack, t_push *push, char c)
 	}
 }
 
-static void	ft_maximo(t_stack *stack, t_push *push, char c)
+void	ft_maximo(t_stack *stack, t_push *push, char c)
 {
-	push->max_a = INT_MIN;
-	push->max_b = INT_MIN;
+	push->max_a = -2147483648;
+	push->max_b = -2147483648;
 	if (c == 'a')
 	{
-		while (stack)
+		while (stack != NULL)
 		{
 			if (stack->content > push->max_a)
 				push->max_a = stack->content;
@@ -51,9 +51,9 @@ static void	ft_maximo(t_stack *stack, t_push *push, char c)
 	}
 	if (c == 'b')
 	{
-		while (stack)
+		while (stack != NULL)
 		{
-			if (stack->content < push->max_b)
+			if (stack->content > push->max_b)
 				push->max_b = stack->content;
 			stack = stack->next;
 		}
@@ -66,25 +66,19 @@ void	maxminstack(t_stack *stack, t_push *push, char c)
 	ft_maximo(stack, push, c);
 }
 
-void	count_nums(t_stack *stack, t_push *push, char c)
-{
-	maxminstack(stack, push, c);
-	if (c == 'a' && stack)
+int	count_nums(t_stack *stack)
+{	
+	int	i;
+
+	i = 0;
+	if (stack == NULL)
+		return (0);
+	while (stack != NULL)
 	{
-		while (stack)
-		{
-			push->len_a++;
-			stack = stack->next;
-		}
+		stack = stack->next;
+		i++;
 	}
-	else if (c == 'b' && stack)
-	{
-		while (stack)
-		{
-			push->len_b++;
-			stack = stack->next;
-		}
-	}
+	return (i);
 }
 
 void	position_nums(t_stack *stack, t_stack *new)

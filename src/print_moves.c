@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:09:14 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/15 13:19:51 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:05:35 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,18 @@ void	print_and_moves_s(t_push *push, char c)
 
 void	print_and_moves_p(t_push *push, char c)
 {
-	if (c == 'a')
+	if (c == 'b')
 	{
 		push->len_a -= 1;
 		push->len_b += 1;
-		printf("pa\n");
+		printf("pb\n");
+		return ;
 	}
-	else if (c == 'b')
+	else if (c == 'a')
 	{
 		push->len_a += 1;
 		push->len_b -= 1;
-		printf("pb\n");
+		printf("pa\n");
 	}
 	push->moves++;
 }

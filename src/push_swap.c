@@ -6,45 +6,51 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:37:26 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/16 15:22:29 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/20 18:26:26 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push_swap(t_stack **stack, char **av, t_push *push)
-{
-	put_arg_to_int(stack, av, push);
-}
 
-int	main(int ac, char *av[])
+int	main(int ac, char **av)
 {
 	t_push	*push;
-/* 	t_push	*tmp; */
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	t_stack	*tmp;
+	int 	i = 1;
 
-	push = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
+	tmp = NULL;
+	push = (t_push *)malloc(sizeof(t_push));
+	if (push == NULL)
+		exit(1);
+	ft_init_push(push);
+	if (!push)
+		exit (1);
 	if (ac < 2)
-		exit_ps("need-arg");
-	else
+		ft_error();
+	argcheck(av, &stack_a);
+	tmp = stack_a;
+	while (tmp)
 	{
-		push = ft_init_push(push);
-		push_swap(&(push->a), av, push);
-		printf("\nNodo: %d   Pos: %d\n", push->a->content, push->a->pos);
-		printf("\nNodo: %d   Pos: %d\n", push->a->next->content, push->a->next->pos);
-		printf("\nNodo: %d   Pos: %d\n", push->a->next->next->content, push->a->next->next->pos);
-/* 		printf("\nNodo: %d   Pos: %d\n", push->a->next->next->next->content, push->a->next->next->next->pos);
-		printf("\nNodo: %d   Pos: %d\n\n\n", push->a->next->next->next->next->content, push->a->next->next->next->next->pos);
-		 */algo_3(&push->a, push);
-		printf("\nNodo: %d   Pos: %d\n", push->a->content, push->a->pos);
-		printf("\nNodo: %d   Pos: %d\n", push->a->next->content, push->a->next->pos);
-		printf("\nNodo: %d   Pos: %d\n", push->a->next->next->content, push->a->next->next->pos);
-	/* 	printf("\nNodo: %d   Pos: %d\n", push->a->next->next->next->content, push->a->next->next->next->pos);
-		printf("\nNodo: %d   Pos: %d\n", push->a->next->next->next->next->content, push->a->next->next->next->next->pos);
-		 */
-/* 		printf("Movimientos: %d\n", push->moves);
-		count_nums(push->a, push, 'a');
-		printf("Tamaño del stack A: %d\n", push->len_a); */
-
+	//	printf("NODO %d  CONTENIDO %d Y POSICION: %d\n", i, tmp->content, tmp->pos);
+		tmp = tmp->next;
+		i++;
 	}
+	select_algo(&stack_a, &stack_b, push);
+	tmp = stack_a;
+	i = 1;
+	while (tmp)
+	{
+/* 		printf("NODO %d  CONTENIDO %d Y POSICION: %d\n", i, tmp->content, tmp->pos);
+		*/tmp = tmp->next;
+		i++;
+	}
+	printf("%d MOVIMIENTOS", push->moves);
+	stackclear(&stack_a);
+	free(push);
 	return (0);
 }

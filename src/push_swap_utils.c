@@ -6,7 +6,7 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:30:11 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/16 13:00:33 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:20:31 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,16 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 {
-	t_stack	*ultimo;
+	t_stack	*cpy;
 
-	if (lst == NULL)
+	if (!lst || !new)
 		return ;
-	if (!(*lst))
+	if (*lst == NULL)
 		*lst = new;
 	else
 	{
-		ultimo = ft_lstlast_ps(*lst);
-		if (ultimo)
-			ultimo->next = new;
+		cpy = ft_lstlast_ps(*lst);
+		cpy -> next = new;
 	}
 	return ;
 }
@@ -55,34 +54,18 @@ void	ft_lstiter_ps(t_stack *lst)
 	while (lst && lst->next != NULL)
 	{
 		lst = lst->next;
-		
 	}
 }
 
-void	put_arg_to_int(t_stack **stack, char **av, t_push *push)
+void	put_arg_to_int(t_stack **stack, int num)
 {
-	int		i;
-	int		num;
-	int		j;
-	char	**temp;
-	t_stack	*new;
+	t_stack	*tmp;
 
-	i = 0;
-	if (push)
-	{
-		while (av[++i] != NULL)
-		{
-			j = -1;
-			temp = ft_split(av[i], ' ');
-			while (temp[++j])
-			{
-				num = atoi_ps(temp[j]);
-				new = ft_lstnew_ps(num);
-				ft_lstadd_back_ps(stack, new);
-				position_nums((*stack), new);
-			}
-			free(temp);
-		}
-	}
+	tmp = NULL;
+	tmp = ft_lstnew_ps(num);
+	ft_lstadd_back_ps(stack, tmp);
+	duplicate_nums(*stack, num);
+	position_nums(*stack, tmp);
+	tmp = NULL;
 }
 

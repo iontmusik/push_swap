@@ -3,51 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtorre-s <jtorre-s@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 20:06:49 by jtorre-s          #+#    #+#             */
-/*   Updated: 2022/04/01 22:47:42 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/20 13:52:01 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include "libft.h"
+
+static int	snumber(unsigned long int number, int sign)
+{
+	if (number > 2147483648 && sign == 1)
+	{
+		number = 0;
+		ft_error();
+	}
+	else if (number > 2147483647 && sign != 1)
+	{
+		number = 0;
+		ft_error();
+	}
+	return (number);
+}
 
 int	ft_atoi(const char *str)
 {
-	int			i;
-	long long	num;
-	int			j;
+	unsigned long int	number;
+	int					sign;
 
-	i = 0;
-	j = 1;
-	num = 0;
-	while (str[i] >= 9 & str[i] <= 13 || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while ((*str == ' ') || (*str >= 7 && *str <= 13))
+		str++;
+	sign = 0;
+	if (*str == '+' || *str == '-')
 	{
-		if (str[i] == '-')
-			j *= -1;
-		i++;
+		if (*str == '-')
+			sign++;
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	number = 0;
+	while (*str >= '0' && *str <= '9')
 	{
-		num = num * 10 + str[i] - 48;
-		if (num > 2147483647 && j == 1)
-			return (-1);
-		if (num > 2147483648 && j == -1)
-			return (0);
-		i++;
+		number = 10 * number + (*str - 48);
+		str++;
 	}
-	return (num = num * j);
+	number = snumber(number, sign);
+	if (sign == 1)
+		return (number * -1);
+	return (number);
 }
-
-/*int	main(void)
-{
-	const char	str[] = "2147445745783649";
-
-	printf("%d", ft_atoi(str));
-	printf("\n%d", atoi(str));
-	return (0);
-}*/

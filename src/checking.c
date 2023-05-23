@@ -6,96 +6,65 @@
 /*   By: jtorre-s <jtorre-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:07:27 by jtorre-s          #+#    #+#             */
-/*   Updated: 2023/05/03 17:33:24 by jtorre-s         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:11:02 by jtorre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../include/push_swap.h"
 
-
-int duplicate_nums(char **av)
+int	checkparams(char *argv)
 {
-    int     i;
-    int     j;
-    char    *rep;
+	int	i;
 
-    i = 0;
-    while (av[i])
-    {
-        rep = ft_strdup(av[i]);
-        j = 0;
-        while (av[j])
-        {
-            if (i == j)
-                j++;
-            else if (strcmp(rep, av[j]) == 0)
-            {
-                free(rep);
-                exit_ps("dup");
-            }
-            else
-                j++;
-        }
-        free(rep);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (argv[i])
+	{
+		if ((argv[i] < '0' || argv[i] > '9') && argv[i] != '-')
+			return (1);
+		if (argv[i + 1] == '-')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-long long   atoi_ps(char *num_char)
+void	argcheck(char **argv, t_stack **stack_a)
 {
-    int                 i;
-    int                 neg;
-    unsigned long long  num;
+	char	**av;
+	int		i;
+	int		j;
 
-    i = 0;
-    neg = 1;
-    num = 0;
-    while (num_char[i] == '\n' || num_char[i] == '\t' || num_char[i] == '\v'
-            || num_char[i] == '\r' || num_char[i] =='f' || num_char[i] == ' ')
-            i++;
-    if (num_char[i] == '-')
-        neg = -1;
-    if (num_char[i] == '-' || num_char[i] == '+')
-        i++;
-    while (num_char[i] >= '0' && num_char[i] <= '9')
-    {
-        num = 10 * num + num_char[i] - '0';
-        i++;
-    }
-    num = num * neg;
-    return (num);     
+	i = 1;
+	while (argv[i])
+	{
+		if (ft_strlen(argv[i]) == 0 || (ft_strlen(argv[i]) == 1
+				&& (argv[i][0] == ' ' || argv[i][0] == '-')))
+			ft_error();
+		av = ft_split(argv[i], ' ');
+		j = 0;
+		while (av[j])
+		{
+			if (checkparams(av[j]) != 0)
+				ft_error();
+			put_arg_to_int(stack_a, ft_atoi(av[j]));
+			j++;
+		}
+		ft_freestr(av);
+		i++;
+	}
+	ft_lstorder(stack_a);
+	return ;
 }
 
-int    is_nums(char **av)
+void	duplicate_nums(t_stack *stack, int num)
 {
-    int i;
-    int j;
-
-    i = 0;
-    while (av[i])
-    {
-        j = 0;
-        if (int_limits(av[i]) == 0)
-            exit_ps("max-min");
-        while (av[i][j])
-        {
-            if (ft_isalpha(av[i][j]) == 1 || av[i][j] == '.' || ((av[i][j]) == '-' 
-                && (av[i][j + 1]) == '\0') || (av[i][j] == '+' && (av[i][j + 1]) == '\0'))
-                    exit_ps("inv-arg");
-            j++;
-        }
-    }
-    return (1);
+	while (stack->next != NULL)
+	{
+		if (stack->content == num)
+			ft_error();
+		stack = stack->next;
+	}
+	return ;
 }
 
-int    int_limits(char *av)
-{
-    long long num;
-
-    num = atoi_ps(av);
-    if (num >= INT_MIN && num <= INT_MAX && ft_strlen(av) < 12)
-        return (1);
-    return (0);
-}
