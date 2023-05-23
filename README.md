@@ -66,7 +66,6 @@ rrb - reverse rotate stack b.
 
 rrr - rra and rrb at the same time.
 
-USED ALGORITHM
 
 📋 Testing
 You can use this third party testers to fully test the project:
